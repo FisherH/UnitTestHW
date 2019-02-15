@@ -223,6 +223,30 @@ namespace UnitTests.GameEngine
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
 
+        [Test]
+        public void ScaleLevel_Current_1_End_2_Fixed_5_Should_set_HP_10()
+        {
+            // Arrange
+            var CurrentLevel = 1;
+            var EndLevel = 2;
+            var Expected = 10;
 
+            // Force RollDice to return a 5
+            Crawl.Models.GameGlobals.SetForcedRandomNumbersValue(5);
+
+            // Create Character
+            Crawl.Models.Character c;
+            c = new Crawl.Models.Character { Id = Guid.NewGuid().ToString(), Name = "c", Description = "d", Level = CurrentLevel };
+
+            // Act
+            c.ScaleLevel(EndLevel);
+            var Actual = c.GetHealthMax();
+
+            // Reset
+            Crawl.Models.GameGlobals.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
     }
 }

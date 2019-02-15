@@ -140,6 +140,23 @@ namespace UnitTests.GameEngine
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
 
+        [Test]
+        public void ScaleLevel_Level_100_Should_Fail()
+        {
+            Crawl.Models.Character c;
+            c = new Crawl.Models.Character { Id = Guid.NewGuid().ToString(), Name = "c", Description = "d", Level = 1 };
+
+            // Arrange
+            var Level = 100;
+            var Expected = false;
+
+            // Act
+            var Actual = c.ScaleLevel(Level);
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
+
 
     }
 }

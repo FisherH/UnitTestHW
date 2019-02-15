@@ -148,9 +148,9 @@ namespace UnitTests.GameEngine
             var EndLevel = 100;
             var Expected = false;
 
+            // Create Character
             Crawl.Models.Character c;
             c = new Crawl.Models.Character { Id = Guid.NewGuid().ToString(), Name = "c", Description = "d", Level = CurrentLevel };
-
 
             // Act
             var Actual = c.ScaleLevel(EndLevel);
@@ -158,6 +158,26 @@ namespace UnitTests.GameEngine
             // Assert
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
+
+        [Test]
+        public void ScaleLevel_Current_1_End_0_Should_Fail()
+        {
+            // Arrange
+            var CurrentLevel = 1;
+            var EndLevel = 0;
+            var Expected = false;
+
+            // Create Character
+            Crawl.Models.Character c;
+            c = new Crawl.Models.Character { Id = Guid.NewGuid().ToString(), Name = "c", Description = "d", Level = CurrentLevel };
+
+            // Act
+            var Actual = c.ScaleLevel(EndLevel);
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
+
 
 
 

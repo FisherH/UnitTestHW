@@ -99,7 +99,7 @@ namespace UnitTests.GameEngine
         }
 
         [Test]
-        public void RollDice_Roll_1_Dice_10_Forced_5_Should_Return_5()
+        public void RollDice_Roll_1_Dice_10_Fixed_5_Should_Return_5()
         {
             // Arrange
             var Roll = 1;
@@ -119,6 +119,26 @@ namespace UnitTests.GameEngine
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
 
+        [Test]
+        public void RollDice_Roll_3_Dice_10_Fixed_5_Should_Return_5()
+        {
+            // Arrange
+            var Roll = 3;
+            var Dice = 10;
+            var Expected = 15;
+
+            // Force RollDice to return a 5
+            Crawl.Models.GameGlobals.SetForcedRandomNumbersValue(5);
+
+            // Act
+            var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
+
+            // Reset
+            Crawl.Models.GameGlobals.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
 
 
     }

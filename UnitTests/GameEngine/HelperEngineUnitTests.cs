@@ -141,21 +141,24 @@ namespace UnitTests.GameEngine
         }
 
         [Test]
-        public void ScaleLevel_Level_100_Should_Fail()
+        public void ScaleLevel_Current_1_End_100_Should_Fail()
         {
-            Crawl.Models.Character c;
-            c = new Crawl.Models.Character { Id = Guid.NewGuid().ToString(), Name = "c", Description = "d", Level = 1 };
-
             // Arrange
-            var Level = 100;
+            var CurrentLevel = 1;
+            var EndLevel = 100;
             var Expected = false;
 
+            Crawl.Models.Character c;
+            c = new Crawl.Models.Character { Id = Guid.NewGuid().ToString(), Name = "c", Description = "d", Level = CurrentLevel };
+
+
             // Act
-            var Actual = c.ScaleLevel(Level);
+            var Actual = c.ScaleLevel(EndLevel);
 
             // Assert
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
+
 
 
     }

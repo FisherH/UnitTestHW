@@ -38,7 +38,6 @@ namespace UnitTests.GameEngine
             Assert.NotZero(Actual, TestContext.CurrentContext.Test.Name);
         }
 
-
         [Test]
         public void RollDice_Roll_0_Dice_10_Should_Fail()
         {
@@ -119,5 +118,8 @@ namespace UnitTests.GameEngine
             // Assert
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
+
+
+
     }
 }

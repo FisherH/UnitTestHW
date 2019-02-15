@@ -1,6 +1,7 @@
 ﻿using System;
 using Crawl.Models;
 
+
 namespace Crawl.GameEngine
 {
     public static class HelperEngine
@@ -22,22 +23,22 @@ namespace Crawl.GameEngine
         public static int RollDice (int rolls, int dice)
         {
 
+            var myReturn = 0;
+
             if (rolls < 1)
             {
-                return 0;
+                myReturn = 0;
             }
 
             if (dice < 1)
             {
-                return 0;
+                myReturn = 0;
             }
 
             if (Models.GameGlobals.ForceRollsToNotRandom)
             { 
-                return rolls * Models.GameGlobals.ForcedRandomValue;
+                myReturn = rolls * Models.GameGlobals.ForcedRandomValue;
             }
-
-            var myReturn = 0;
 
             for (var i = 0; i < rolls; i++)
             {
